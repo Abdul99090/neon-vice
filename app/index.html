@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NEON VICE — Cover Art Maker</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <span class="brand-star">✦</span>
+    <span class="brand-name">NEON&nbsp;VICE</span>
+    <span class="brand-tag">COVER ART MAKER</span>
+  </div>
+  <div class="top-actions">
+    <label class="size-label" for="sizeSelect">SIZE</label>
+    <select id="sizeSelect">
+      <option value="1920x1080" selected>1920 x 1080 — landscape post</option>
+      <option value="1080x1350">1080 x 1350 — portrait poster</option>
+      <option value="1080x1080">1080 x 1080 — square feed</option>
+    </select>
+    <button id="exportBtn" class="export-btn" type="button">Export PNG</button>
+  </div>
+</header>
+
+<main class="workspace">
+  <section class="stage" id="stage">
+    <div class="canvas-wrap" id="canvasWrap">
+      <canvas id="coverCanvas" width="1920" height="1080"></canvas>
+    </div>
+    <p class="stage-hint">Drop in your photos — the poster builds itself.</p>
+  </section>
+
+  <aside class="panel">
+    <h2>Photos</h2>
+    <div class="thumbs" id="thumbs"></div>
+    <div class="row">
+      <button id="addPhotosBtn" class="btn btn-cyan" type="button">Add photos</button>
+      <button id="resetDemoBtn" class="btn btn-ghost" type="button">Reset demo photos</button>
+    </div>
+    <input id="fileInput" type="file" accept="image/*" multiple hidden>
+    <p class="hint">Photos fill the poster panels in order. Click a panel
+      on the cover, then drag the photo inside it. Click a photo here to
+      put it in the selected panel.</p>
+
+    <h2>Panel</h2>
+    <div class="chips" id="panelChips"></div>
+    <p class="panel-name" id="panelName">Panel 1 — hero</p>
+    <label class="slider-row">
+      <span>Zoom</span>
+      <input id="zoomRange" type="range" min="100" max="260" value="100">
+    </label>
+    <div class="row">
+      <button id="gradeBtn" class="btn btn-ghost" type="button">Grade: Sunset</button>
+      <button id="swapBtn" class="btn btn-ghost" type="button">Swap with next</button>
+    </div>
+    <div class="row">
+      <button id="backdropBtn" class="btn btn-ghost" type="button">Backdrop: Dusk Beach</button>
+      <button id="clearPhotoBtn" class="btn btn-ghost" type="button">Use backdrop</button>
+    </div>
+
+    <h2>Words</h2>
+    <label class="field">
+      <span>Headline</span>
+      <input id="headlineInput" type="text" value="Neon Shores" maxlength="24">
+    </label>
+    <label class="field">
+      <span>Kicker</span>
+      <input id="kickerInput" type="text" value="Sunset County • Est. 1987" maxlength="48">
+    </label>
+
+    <h2>Look</h2>
+    <div class="chips" id="layoutChips">
+      <button type="button" data-layout="poster" class="chip active">Poster</button>
+      <button type="button" data-layout="strip" class="chip">Strip</button>
+      <button type="button" data-layout="grid" class="chip">Grid</button>
+      <button type="button" data-layout="focus" class="chip">Focus</button>
+    </div>
+    <label class="slider-row">
+      <span>Grade strength</span>
+      <input id="gradeRange" type="range" min="0" max="100" value="85">
+    </label>
+    <p class="hint">Every panel gets the Vice grade — teal shadows, warm
+      highlights — alternating Sunset and Neon Night across the cuts.
+      Panels without a photo are filled with an illustrated backdrop, so
+      one photo is already a whole poster.</p>
+  </aside>
+</main>
+
+<script src="src/backdrops.js"></script>
+<script src="src/cover.js"></script>
+<script src="src/main.js"></script>
+</body>
+</html>
